@@ -40,7 +40,8 @@ module.exports = {
   },
   resolve: {
     alias: {
-      'web-animations.min': path.normalize('ionic-framework/js/web-animations.min')
+        'ionic': 'ionic-framework',
+        'web-animations.min': path.normalize('ionic-framework/js/web-animations.min')
     },
     extensions: ["", ".js", ".ts"]
   }

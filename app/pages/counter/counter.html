@@ -12,45 +12,23 @@
 
         <ion-col>
 
-            <ion-card>
+            <ion-card class="card">
+
+                <!--<ion-item class="header">-->
+                    <input class="header" type="text" placeholder="Counter">
+                <!--</ion-item>-->
+
+
+                <div class="count">
+                    <input type="number" value="1" >
+                </div>
 
                 <ion-item>
-                    <h2>Counter 1</h2>
-                </ion-item>
-
-                <img src="http://lorempixel.com/400/200/sports/1/">
-
-                <ion-item>
-                    <button primary clear item-left>
-                        <icon thumbs-up></icon>
-                        <div>Add</div>
+                    <button primary clear item-left (click)="countIncrement()">
+                        <span>Increment</span>
                     </button>
                     <ion-note item-right>
                         11s ago
-                    </ion-note>
-                </ion-item>
-
-            </ion-card>
-
-        </ion-col>
-
-        <ion-col>
-
-            <ion-card>
-
-                <ion-item>
-                    <h2>Counter 2</h2>
-                </ion-item>
-
-                <img src="http://lorempixel.com/400/200/sports/2/">
-
-                <ion-item>
-                    <button primary clear item-left>
-                        <icon thumbs-up></icon>
-                        <div>Add</div>
-                    </button>
-                    <ion-note item-right>
-                        60s ago
                     </ion-note>
                 </ion-item>
 
