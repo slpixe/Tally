@@ -1,41 +1,26 @@
 <ion-navbar *navbar>
-    <button menuToggle>
-        <ion-icon name="menu"></ion-icon>
-    </button>
     <ion-title>Counter</ion-title>
 </ion-navbar>
 
-
 <ion-content padding class="counter">
-
     <ion-row>
-
-        <ion-col>
-
+        <ion-col *ngFor="#counter of counters">
             <ion-card class="card">
-
                 <!--<ion-item class="header">-->
-                    <input class="header" type="text" placeholder="Counter">
+                <input class="header" type="text" placeholder="Counter" value="{{counter.name}}">
                 <!--</ion-item>-->
-
-
                 <div class="count">
-                    <input type="number" value="1" >
+                    <input type="number" value="{{counter.count}}">
                 </div>
-
                 <ion-item>
-                    <button primary clear item-left (click)="countIncrement()">
+                    <button primary clear item-left (click)="countIncrement(counter)">
                         <span>Increment</span>
                     </button>
                     <ion-note item-right>
                         11s ago
                     </ion-note>
                 </ion-item>
-
             </ion-card>
-
         </ion-col>
-
     </ion-row>
-
 </ion-content>
