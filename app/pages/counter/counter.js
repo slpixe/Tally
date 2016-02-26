@@ -36,4 +36,13 @@ export class CounterPage {
 
         console.log(this.counters[0]);
     }
+
+    addCount(){
+        this.counters.push(
+            new Count(
+                'test ' + (this.counters.length + 1),
+                0
+            )
+        );
+    }
 }
