@@ -3,8 +3,8 @@
 </ion-navbar>
 
 <ion-content padding class="counter">
-    <ion-row>
-        <ion-col *ngFor="#counter of counters">
+    <ion-row class="rowCount" wrap>
+        <ion-col class="colCount" *ngFor="#counter of counters">
             <ion-card class="card">
                 <!--<ion-item class="header">-->
                 <input class="header" type="text" placeholder="Counter" value="{{counter.name}}">
