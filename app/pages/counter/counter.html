@@ -17,7 +17,7 @@
                         <span>Increment</span>
                     </button>
                     <ion-note item-right>
-                        {{counter.sinceUpdated}}s ago
+                        <span *ngIf="counter.sinceUpdated">{{counter.sinceUpdated}}s ago</span>
                     </ion-note>
                 </ion-item>
             </ion-card>
