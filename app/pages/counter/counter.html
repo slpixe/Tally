@@ -1,13 +1,23 @@
-<ion-navbar *navbar>
+<ion-header>
+  <ion-navbar>
+    <button menuToggle>
+      <ion-icon name="menu"></ion-icon>
+    </button>
     <ion-title>Counter</ion-title>
-</ion-navbar>
+    <ion-buttons end>
+      <button (click)="presentPopover($event)">
+        <ion-icon name="more"></ion-icon>
+      </button>
+    </ion-buttons>
+  </ion-navbar>
+</ion-header>
 
 <ion-content padding class="counter">
     <ion-row class="rowCount" wrap>
-        <ion-col class="colCount" *ngFor="#counter of counters">
+        <ion-col class="colCount" *ngFor="let counter of counters">
             <ion-card class="card">
                 <!--<ion-item class="header">-->
-                <input class="header" type="text" placeholder="Counter" value="{{counter.name}}">
+                <input class="header" type="text" placeholder="Counter" value="{{counter.label}}">
                 <!--</ion-item>-->
                 <div class="count">
                     <input type="number" value="{{counter.count}}">
@@ -23,9 +33,8 @@
             </ion-card>
         </ion-col>
     </ion-row>
-
-    <button fab fab-bottom fab-right (click)="addCount()">
-        <ion-icon name="add"></ion-icon>
-    </button>
-
 </ion-content>
+
+<button fab fab-bottom fab-right (click)="addCounter()">
+    <ion-icon name="add"></ion-icon>
+</button>

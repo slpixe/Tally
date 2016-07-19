@@ -1,0 +1,29 @@
+{
+  "counters":[
+    {
+      "label":"Counter 1",
+      "count": 2
+    },{
+      "label":"Counter 2",
+      "count": 3
+    },{
+      "label":"Counter 2",
+      "count": 3
+    },{
+      "label":"Counter 2",
+      "count": 3
+    },{
+      "label":"Counter 2",
+      "count": 3
+    },{
+      "label":"Counter 2",
+      "count": 3
+    },{
+      "label":"Counter 2",
+      "count": 3
+    },{
+      "label":"Counter 2",
+      "count": 3
+    }
+  ]
+}
