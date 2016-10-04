@@ -4,6 +4,7 @@ var gulp = require('gulp'),
     runSequence = require('run-sequence'),
     argv = process.argv;
 
+
 /**
  * Ionic hooks
  * Add ':before' or ':after' to any Ionic project command name to run the specified
@@ -31,6 +32,7 @@ var buildSass = require('ionic-gulp-sass-build');
 var copyHTML = require('ionic-gulp-html-copy');
 var copyFonts = require('ionic-gulp-fonts-copy');
 var copyScripts = require('ionic-gulp-scripts-copy');
+var tslint = require('ionic-gulp-tslint');
 
 var isRelease = argv.indexOf('--release') > -1;
 
@@ -44,6 +46,7 @@ gulp.task('watch', ['clean'], function(done){
     }
   );
 });
+
 gulp.task('build', ['clean'], function(done){
   runSequence(
     ['sass', 'html', 'fonts', 'scripts'],
@@ -68,12 +71,4 @@ gulp.task('scripts', copyScripts);
 gulp.task('clean', function(){
   return del('www/build');
 });
-
-// Run typescript linter on the app folder
-gulp.task('tslint', function() {
-  var tslint = require('gulp-tslint');
-  return gulp.src([
-      'app/**/*.ts'
-    ]).pipe(tslint())
-      .pipe(tslint.report('verbose'));
-});
+gulp.task('lint', tslint);
