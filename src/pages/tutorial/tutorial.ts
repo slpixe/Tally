@@ -2,8 +2,6 @@ import { Component } from '@angular/core';
 
 import { MenuController, NavController } from 'ionic-angular';
 
-import { WelcomePage } from '../welcome/welcome';
-
 import { TranslateService } from 'ng2-translate/ng2-translate';
 
 
@@ -48,13 +46,6 @@ export class TutorialPage {
           image: 'assets/img/ica-slidebox-img-3.png',
         }
       ];
-    });
-  }
-
-  startApp() {
-    this.navCtrl.setRoot(WelcomePage, {}, {
-      animate: true,
-      direction: 'forward'
     });
   }
 

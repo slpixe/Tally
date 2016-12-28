@@ -1,6 +1,6 @@
 {
-  "name": "Ionic",
-  "short_name": "Ionic",
+  "name": "Tally App",
+  "short_name": "Tally",
   "start_url": "index.html",
   "display": "standalone",
   "icons": [{

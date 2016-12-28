@@ -12,7 +12,6 @@ import { MapPage } from '../pages/map/map';
 import { SignupPage } from '../pages/signup/signup';
 import { TabsPage } from '../pages/tabs/tabs';
 import { TutorialPage } from '../pages/tutorial/tutorial';
-import { WelcomePage } from '../pages/welcome/welcome';
 import { ListMasterPage } from '../pages/list-master/list-master';
 import { ItemCreatePage } from '../pages/item-create/item-create';
 import { ItemDetailPage } from '../pages/item-detail/item-detail';
@@ -63,7 +62,6 @@ let pages = [
   SignupPage,
   TabsPage,
   TutorialPage,
-  WelcomePage,
   ListMasterPage,
   ItemDetailPage,
   ItemCreatePage,
