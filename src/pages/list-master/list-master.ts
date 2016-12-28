@@ -53,4 +53,18 @@ export class ListMasterPage {
       item: item
     });
   }
+
+  /**
+  * increments a counters count value
+  */
+  increment(item) {
+    item.count++;
+  }
+
+  /**
+  * decrements a counters count value
+  */
+  decrement(item) {
+    item.count--;
+  }
 }

@@ -4,6 +4,9 @@
     <ion-title>{{ 'LIST_MASTER_TITLE' | translate }}</ion-title>
 
     <ion-buttons end>
+      <button ion-button icon-only (click)="filter()">
+        <ion-icon name="search"></ion-icon>
+      </button>
       <button ion-button icon-only (click)="addItem()">
         <ion-icon name="add"></ion-icon>
       </button>
@@ -12,24 +15,55 @@
 
 </ion-header>
 
-<ion-content>
+<ion-content class="counter">
 
-  <ion-list>
-    <ion-item-sliding *ngFor="let item of currentItems">
-      <button ion-item (click)="openItem(item)">
-        <ion-avatar item-left>
-          <img [src]="item.profilePic" />
-        </ion-avatar>
-        <h2>{{item.name}}</h2>
-        <p>{{item.about}}</p>
-        <ion-note item-right *ngIf="item.note">{{item.note}}</ion-note>
-      </button>
+  <!-- <ion-list>
+    <ion-item *ngFor="let item of currentItems">
+      <ion-icon name="remove" item-left (click)="decrement(item)"></ion-icon>
+      <h2 text-center (click)="openItem(item)">{{item.name}}</h2>
+      <ion-icon name="add" item-right (click)="decrement(item)"></ion-icon>
+      <ion-row>
+        <ion-col center text-center>
+          <ion-note>
+            <ion-icon name="clock"></ion-icon>
+            11h ago
+          </ion-note>
+        </ion-col>
+      </ion-row>
+    </ion-item>
+  </ion-list> -->
 
-      <ion-item-options>
-        <button ion-button color="danger" (click)="deleteItem(item)">
-          Delete
+  <ion-card *ngFor="let item of currentItems">
+
+    <ion-card-header text-center>
+      <h2>{{item.label}}</h2>
+    </ion-card-header>
+
+    <ion-card-content>
+      <p text-center class="count">{{item.count}}</p>
+    </ion-card-content>
+
+    <ion-row>
+      <ion-col>
+        <button ion-button icon-left clear class="tally-unary" (click)="decrement(item)">
+          <ion-icon name="remove"></ion-icon>
+          <div>decrement</div>
         </button>
-      </ion-item-options>
-    </ion-item-sliding>
-  </ion-list>
+      </ion-col>
+      <ion-col center text-center>
+        <ion-note>
+          <ion-icon name="clock"></ion-icon>
+          <span *ngIf="item.sinceUpdated">{{counter.sinceUpdated}}s ago</span>
+        </ion-note>
+      </ion-col>
+      <ion-col>
+        <button ion-button icon-left clear class="tally-unary" (click)="increment(item)">
+          <ion-icon name="add"></ion-icon>
+          <div>increment</div>
+        </button>
+      </ion-col>
+    </ion-row>
+
+  </ion-card>
+
 </ion-content>

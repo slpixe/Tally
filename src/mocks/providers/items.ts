@@ -8,48 +8,44 @@ export class Items {
   items: Item[] = [];
 
   defaultItem: any = {
-    "name": "Burt Bear",
-    "profilePic": "assets/img/speakers/bear.jpg",
-    "about": "Burt is a Bear.",
+  "label": "white Cars",
+  "count": 1,
+  "createdAt": "2012-04-23T18:25:43.511Z",
+  "modifiedAt": "2012-04-23T18:25:43.511Z",
   };
 
 
   constructor(public http: Http) {
     let items = [
       {
-         "name": "Burt Bear",
-         "profilePic": "assets/img/speakers/bear.jpg",
-         "about": "Burt is a Bear."
+         "label": "Red Cars",
+         "count": 3,
+         "createdAt": "2012-04-23T18:25:43.511Z",
+         "modifiedAt": "2012-04-23T18:25:43.511Z"
        },
        {
-         "name": "Charlie Cheetah",
-         "profilePic": "assets/img/speakers/cheetah.jpg",
-         "about": "Charlie is a Cheetah."
+       "label": "Blue Cars",
+       "count": 2,
+       "createdAt": "2012-04-23T18:25:43.511Z",
+       "modifiedAt": "2012-04-23T18:25:43.511Z"
        },
        {
-         "name": "Donald Duck",
-         "profilePic": "assets/img/speakers/duck.jpg",
-         "about": "Donald is a Duck."
+       "label": "Silver Cars",
+       "count": 10,
+       "createdAt": "2012-04-23T18:25:43.511Z",
+       "modifiedAt": "2012-04-23T18:25:43.511Z"
        },
        {
-         "name": "Eva Eagle",
-         "profilePic": "assets/img/speakers/eagle.jpg",
-         "about": "Eva is an Eagle."
+       "label": "Green Cars",
+       "count": 0,
+       "createdAt": "2012-04-23T18:25:43.511Z",
+       "modifiedAt": "2012-04-23T18:25:43.511Z"
        },
        {
-         "name": "Ellie Elephant",
-         "profilePic": "assets/img/speakers/elephant.jpg",
-         "about": "Ellie is an Elephant."
-       },
-       {
-         "name": "Molly Mouse",
-         "profilePic": "assets/img/speakers/mouse.jpg",
-         "about": "Molly is a Mouse."
-       },
-       {
-         "name": "Paul Puppy",
-         "profilePic": "assets/img/speakers/puppy.jpg",
-         "about": "Paul is a Puppy."
+       "label": "Black Cars",
+       "count": 20,
+       "createdAt": "2012-04-23T18:25:43.511Z",
+       "modifiedAt": "2012-04-23T18:25:43.511Z"
        }
      ];
 
