@@ -1,4 +1,4 @@
-import { Component, ViewChild } from '@angular/core';
+import { Component } from '@angular/core';
 import { Validators, FormBuilder, FormGroup } from '@angular/forms';
 import { NavController, ViewController } from 'ionic-angular';
 
@@ -16,7 +16,7 @@ export class ItemCreatePage {
 
   isReadyToSave: boolean;
 
-  item: any;
+  counter: any;
 
   form: FormGroup;
 

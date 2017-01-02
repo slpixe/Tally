@@ -1,13 +1,13 @@
 import { Injectable } from '@angular/core';
 import { Http } from '@angular/http';
 
-import { Item } from '../../models/item';
+import { Counter } from '../../models/counter';
 
 @Injectable()
-export class Items {
-  items: Item[] = [];
+export class Counters {
+  counters: Counter[] = [];
 
-  defaultItem: any = {
+  defaultCounter: any = {
   "label": "white Cars",
   "count": 1,
   "createdAt": "2012-04-23T18:25:43.511Z",
@@ -16,7 +16,7 @@ export class Items {
 
 
   constructor(public http: Http) {
-    let items = [
+    let counters = [
       {
          "label": "Red Cars",
          "count": 3,
@@ -49,34 +49,34 @@ export class Items {
        }
      ];
 
-     for(let item of items) {
-       this.items.push(new Item(item));
-     }
+     //for(let counter of counters) {
+    //   this.counters.push(new Counter(counter));
+    // }
   }
 
   query(params?: any) {
     if(!params) {
-      return this.items;
+      return this.counters;
     }
 
-    return this.items.filter((item) => {
+    return this.counters.filter((counter) => {
       for(let key in params) {
-        let field = item[key];
+        let field = counter[key];
         if(typeof field == 'string' && field.toLowerCase().indexOf(params[key]) >= 0) {
-          return item;
+          return counter;
         } else if(field == params[key]) {
-          return item;
+          return counter;
         }
       }
       return null;
     });
   }
 
-  add(item: Item) {
-    this.items.push(item);
+  add(counter: Counter) {
+    this.counters.push(counter);
   }
 
-  delete(item: Item) {
-    this.items.splice(this.items.indexOf(item), 1);
+  delete(counter: Counter) {
+    this.counters.splice(this.counters.indexOf(counter), 1);
   }
 }

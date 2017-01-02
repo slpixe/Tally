@@ -22,7 +22,7 @@ import { SearchPage } from '../pages/search/search';
 import { User } from '../providers/user';
 import { Api } from '../providers/api';
 import { Settings } from '../providers/settings';
-import { Items } from '../mocks/providers/items';
+import { Counters } from '../providers/counters';
 
 import { TranslateModule, TranslateLoader, TranslateStaticLoader } from 'ng2-translate/ng2-translate';
 
@@ -83,7 +83,7 @@ export function providers() {
     Storage,
     User,
     Api,
-    Items,
+    Counters,
 
     { provide: Settings, useFactory: provideSettings, deps: [ Storage ] },
     // Keep this to enable Ionic's runtime error handling during development

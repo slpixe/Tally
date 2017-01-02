@@ -4,19 +4,17 @@ import { NavController, ModalController } from 'ionic-angular';
 import { ItemDetailPage } from '../item-detail/item-detail';
 import { ItemCreatePage } from '../item-create/item-create';
 
-import { Items } from '../../providers/providers';
-import { Item } from '../../models/item';
+import { Counters } from '../../providers/providers';
+import { Counter } from '../../models/counter';
 
 @Component({
   selector: 'page-list-master',
   templateUrl: 'list-master.html'
 })
 export class ListMasterPage {
-  currentItems: Item[];
+  //currentItems: Counter[];
 
-  constructor(public navCtrl: NavController, public items: Items, public modalCtrl: ModalController) {
-    this.currentItems = this.items.query();
-  }
+  constructor(public navCtrl: NavController, public counters: Counters, public modalCtrl: ModalController, public provCounters: Counters) {}
 
   /**
    * The view loaded, let's query our items for the list
@@ -29,42 +27,52 @@ export class ListMasterPage {
    * modal and then adds the new item to our data source if the user created one.
    */
   addItem() {
-    let addModal = this.modalCtrl.create(ItemCreatePage);
-    addModal.onDidDismiss(item => {
-      if (item) {
-        this.items.add(item);
+
+    let counterInst = new Counter(
+      {
+        'label': 'test 1',
+        'count': 4
       }
-    })
-    addModal.present();
+    );
+
+    this.provCounters.save(counterInst);
+
+    //let addModal = this.modalCtrl.create(ItemCreatePage);
+    //addModal.onDidDismiss(counter => {
+    //  if (counter) {
+        //this.counters.add(counter);
+    //  }
+    //})
+    //addModal.present();
   }
 
   /**
    * Delete an item from the list of items.
    */
-  deleteItem(item) {
-    this.items.delete(item);
+  deleteItem(counter) {
+    //this.counters.delete(counter);
   }
 
   /**
    * Navigate to the detail page for this item.
    */
-  openItem(item: Item) {
+  openItem(counter: Counter) {
     this.navCtrl.push(ItemDetailPage, {
-      item: item
+      counter: counter
     });
   }
 
   /**
   * increments a counters count value
   */
-  increment(item) {
-    item.count++;
+  increment(counter) {
+    counter.count++;
   }
 
   /**
   * decrements a counters count value
   */
-  decrement(item) {
-    item.count--;
+  decrement(counter) {
+    counter.count--;
   }
 }
