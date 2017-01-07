@@ -12,7 +12,7 @@ import { Counter } from '../../models/counter';
   templateUrl: 'list-master.html'
 })
 export class ListMasterPage {
-  //currentItems: Counter[];
+  currentItems: Counter[];
 
   constructor(public navCtrl: NavController, public counters: Counters, public modalCtrl: ModalController, public provCounters: Counters) {}
 
@@ -20,6 +20,12 @@ export class ListMasterPage {
    * The view loaded, let's query our items for the list
    */
   ionViewDidLoad() {
+
+    this.provCounters.load().then(() => {
+      this.currentItems = this.provCounters.allCounters;
+      console.log(this.currentItems);
+    });
+
   }
 
   /**

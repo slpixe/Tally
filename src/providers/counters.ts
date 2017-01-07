@@ -7,7 +7,7 @@ export class Counters {
 
   private COUNTERS_KEY: string = '_counters';
 
-  counters: any = [];
+  counters: Counter[];
 
   _readyPromise: Promise<any>;
 
@@ -33,6 +33,10 @@ export class Counters {
 
     this.counters[counter.getUuid()] = counter;
     return this.storage.set(this.COUNTERS_KEY, this.counters);
+  }
+
+  get allCounters() {
+    return this.counters;
   }
 
 }
