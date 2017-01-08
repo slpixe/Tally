@@ -23,9 +23,9 @@ export class SearchPage {
       this.currentItems = [];
       return;
     }
-    //this.currentItems = this.counters.query({
-    //  name: val
-    //});
+    this.currentItems = this.counters.query({
+      label: val
+    });
   }
 
   /**

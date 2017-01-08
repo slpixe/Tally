@@ -1,13 +1,8 @@
 import { Component } from '@angular/core';
 import { Validators, FormBuilder, FormGroup } from '@angular/forms';
-import { NavController, ViewController } from 'ionic-angular';
+import { NavController, ViewController, NavParams } from 'ionic-angular';
+import { Counters } from '../../providers/providers';
 
-/*
-  Generated class for the ItemCreate page.
-
-  See http://ionicframework.com/docs/v2/components/#navigation for more info on
-  Ionic pages and navigation.
-*/
 @Component({
   selector: 'page-item-create',
   templateUrl: 'item-create.html'
@@ -20,11 +15,23 @@ export class ItemCreatePage {
 
   form: FormGroup;
 
-  constructor(public navCtrl: NavController, public viewCtrl: ViewController, formBuilder: FormBuilder) {
-    this.form = formBuilder.group({
-      label: ['', Validators.required],
-      count: ['']
-    });
+  constructor(public navCtrl: NavController, public viewCtrl: ViewController, formBuilder: FormBuilder, navParams: NavParams, counters: Counters) {
+
+    this.counter = navParams.get('counter');
+
+    //a bit bigger than I like, but can't find a counter.label || ''
+    if(this.counter == null){
+      this.form = formBuilder.group({
+        label: ['', Validators.required],
+        count: ['']
+      });
+    } else {
+      this.form = formBuilder.group({
+        uuid: [this.counter.uuid],
+        label: [this.counter.label, Validators.required],
+        count: [this.counter.count]
+      });
+    }
 
     // Watch the form for changes, and
     this.form.valueChanges.subscribe((v) => {

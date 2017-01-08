@@ -7,16 +7,42 @@
 </ion-header>
 
 
-<ion-content>
+<ion-content padding>
   <ion-searchbar (ionInput)="getItems($event)"></ion-searchbar>
-  <ion-list>
-    <button ion-item (click)="openItem(item)" *ngFor="let item of currentItems">
-      <ion-avatar item-left>
-        <img [src]="item.profilePic" />
-      </ion-avatar>
-      <h2>{{item.name}}</h2>
-      <p>{{item.about}}</p>
-      <ion-note item-right *ngIf="item.note">{{item.note}}</ion-note>
-    </button>
-  </ion-list>
+
+  <ion-card *ngFor="let item of currentItems">
+
+    <ion-card-header text-center>
+      <button ion-button clear (click)="openCounterDetails(item)">
+        <h2>{{item.label}}</h2>
+      </button>
+    </ion-card-header>
+
+    <ion-card-content>
+      <p text-center class="count">{{item.count}}</p>
+    </ion-card-content>
+
+    <ion-row>
+      <ion-col>
+        <button ion-button icon-left clear class="tally-unary" (click)="decrement(item)">
+          <ion-icon name="remove"></ion-icon>
+          <div>{{'COUNTERS_DECREMENT' | translate}}</div>
+        </button>
+      </ion-col>
+      <ion-col center text-center>
+        <ion-note>
+          <ion-icon name="clock"></ion-icon>
+          <span *ngIf="item.sinceUpdated">{{counter.sinceUpdated}}s ago</span>
+        </ion-note>
+      </ion-col>
+      <ion-col text-right>
+        <button ion-button icon-left clear class="tally-unary" (click)="increment(item)">
+          <ion-icon name="add"></ion-icon>
+          <div>{{'COUNTERS_INCREMENT' | translate}}</div>
+        </button>
+      </ion-col>
+    </ion-row>
+
+  </ion-card>
+
 </ion-content>

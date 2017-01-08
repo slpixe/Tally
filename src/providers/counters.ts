@@ -7,12 +7,16 @@ export class Counters {
 
   private COUNTERS_KEY: string = '_counters';
 
-  counters: Counter[];
+  counters: Counter[] = [];
 
   _readyPromise: Promise<any>;
 
   constructor(public storage: Storage) {
     this.load();
+  }
+
+  getByUuid(uuid: number) {
+    return this.counters.find(c => c.uuid === uuid);
   }
 
   load() {
@@ -25,18 +29,48 @@ export class Counters {
 
   save(counter: Counter) {
 
-    if(counter.getUuid() == null) {
+    //wish this worked instead
+    //this.counters[counter.getUuid()] = counter;
+
+    if(counter.uuid == null) {
       console.log('no uuid');
       let newUuid = Date.now();
-      counter.setUuid(newUuid);
+      counter.uuid = newUuid;
+      this.counters.push(counter);
+    } else {
+      //let original = this.query({uuid: counter.uuid});
+      let original = this.getByUuid(counter.uuid);
+      if(original) Object.assign(original, counter);
     }
 
-    this.counters[counter.getUuid()] = counter;
     return this.storage.set(this.COUNTERS_KEY, this.counters);
+  }
+
+  query(params?: any) {
+    if(!params) {
+      return this.counters;
+    }
+
+    return this.counters.filter((counter) => {
+      for(let key in params) {
+        let field = counter[key];
+        if(typeof field == 'string' && field.toLowerCase().indexOf(params[key]) >= 0) {
+          return counter;
+        } else if(field == params[key]) {
+          return counter;
+        }
+      }
+      return null;
+    });
   }
 
   get allCounters() {
     return this.counters;
+  }
+
+  private clone(object: any){
+    // hack
+    return JSON.parse(JSON.stringify(object));
   }
 
 }

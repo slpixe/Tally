@@ -1,25 +1,25 @@
 
 export class Counter {
 
-  _uuid: string;
-  _label: string;
-  _count: number;
+  uuid: number;
+  label: string;
+  count: number;
 
-  constructor(counter: any) {
-    this._uuid = counter.uuid;
-    this._label = counter.label;
-    this._count = counter.count;
+  constructor(data: any) {
+    this.uuid = data.uuid;
+    this.label = data.label;
+    this.count = data.count;
   }
 
-  get() {
-    console.log(this._label, this._count);
-  }
+  //get() {
+    //console.log(this._label, this._count);
+  //}
 
   getUuid() {
-    return this._uuid;
+    return this.uuid;
   }
   setUuid(newUuid) {
-    this._uuid = newUuid;
+    this.uuid = newUuid;
   }
 
 }

@@ -14,17 +14,16 @@ import { Counter } from '../../models/counter';
 export class ListMasterPage {
   currentItems: Counter[];
 
-  constructor(public navCtrl: NavController, public counters: Counters, public modalCtrl: ModalController, public provCounters: Counters) {}
+  constructor(public navCtrl: NavController, public counters: Counters, public modalCtrl: ModalController, public provCounters: Counters) {
+    this.provCounters.load().then(() => {
+      this.currentItems = this.provCounters.allCounters;
+    });
+  }
 
   /**
    * The view loaded, let's query our items for the list
    */
   ionViewDidLoad() {
-
-    this.provCounters.load().then(() => {
-      this.currentItems = this.provCounters.allCounters;
-      console.log(this.currentItems);
-    });
 
   }
 
@@ -34,22 +33,22 @@ export class ListMasterPage {
    */
   addItem() {
 
-    let counterInst = new Counter(
-      {
-        'label': 'test 1',
-        'count': 4
-      }
-    );
-
-    this.provCounters.save(counterInst);
-
-    //let addModal = this.modalCtrl.create(ItemCreatePage);
-    //addModal.onDidDismiss(counter => {
-    //  if (counter) {
-        //this.counters.add(counter);
+    //let counterInst = new Counter(
+    //  {
+    //    'label': 'test 1',
+    //    'count': 4
     //  }
-    //})
-    //addModal.present();
+    //);
+
+    //this.provCounters.save(counterInst);
+
+    let addModal = this.modalCtrl.create(ItemCreatePage);
+    addModal.onDidDismiss(counter => {
+      if (counter) {
+        this.counters.save(counter);
+      }
+    })
+    addModal.present();
   }
 
   /**
@@ -62,10 +61,23 @@ export class ListMasterPage {
   /**
    * Navigate to the detail page for this item.
    */
-  openItem(counter: Counter) {
-    this.navCtrl.push(ItemDetailPage, {
-      counter: counter
-    });
+  openCounterDetails(counter: Counter) {
+    //this.navCtrl.push(ItemDetailPage, {
+    //  counter: counter
+    //});
+
+    let editModal = this.modalCtrl.create(ItemCreatePage, {counter: counter});
+    editModal.onDidDismiss(counter => {
+      if (counter) {
+        this.counters.save(counter);
+      }
+    })
+    editModal.present();
+  }
+
+  filter() {
+    let fr = this.counters.getByUuid(1483850237532);
+    console.log(fr);
   }
 
   /**

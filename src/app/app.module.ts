@@ -71,7 +71,7 @@ let pages = [
 ];
 
 export function declarations() {
-  return pages;
+  return [pages];
 }
 
 export function entryComponents() {
